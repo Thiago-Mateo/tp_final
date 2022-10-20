@@ -8,16 +8,6 @@ const codeSchema = new Schema ({
   rating: String
 });
 
-const userDataSchema = new Schema ({
-  name: String,
-  surName: String,
-  steamAccount: String,
-  age: Number,
-  game: [codeSchema]
-});
-
 const GameInfo = mongoose.model('GameInfo', codeSchema);
-const UserData = mongoose.model('UserData', userDataSchema);
 
-export default UserData;
 export default GameInfo;

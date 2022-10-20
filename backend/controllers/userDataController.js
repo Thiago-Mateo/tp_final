@@ -1,16 +1,9 @@
-import UserData from '../models/Codigo.js';
-import GameInfo from '../models/Codigo.js';
+import UserData from "../models/Usuario";
 
-const getGameCode = (req, res) => {
-  GameInfo.findById(req.params.id, (err, gameinfo) => {
-    res.status(200).json(gameinfo);
-  });
+const postUserData = (req, res) => {
+    userdata = UserData(req.body)
+    .save((err, userdata) => {
+        res.status(201).json(userdata);
+    });
 };
 
-const postGameCode = (req, res) => {
-  const { gamecode, name, rating } = req.body;
-  const gameinfo = new GameInfo({ gamecode, name, rating });
-  gameinfo.save((err, gameinfo) => {
-    res.status(201).json(gameinfo);
-  });
-};
