@@ -15,8 +15,15 @@ mongoose.connect(DB)
 //Instanciar la app
 const app = express();
 
+//Middleware
 app.use(express.json());
 app.use(morgan('dev'));
+
+import gameRouter from "./routes/game.js";
+app.use('/site', gameRouter);
+
+import userRouter from "./routes/user.js";
+app.use('/site', userRouter);
 
 
 app.listen(PORT, () => console.log("Servidor escuchando en puerto " + PORT));

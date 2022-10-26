@@ -1,15 +1,16 @@
 import GameInfo from '../models/Codigo.js';
 
 const getGameCode = (req, res) => {
-  GameInfo.findById(req.params.id, (err, gameinfo) => {
+  GameInfo.find({ gameCode: req.params.code }, (err, gameinfo) => {
     res.status(200).json(gameinfo);
   });
 };
 
 const postGameCode = (req, res) => {
-  gameinfo = GameInfo(req.body)
-  .save((err, gameinfo) => {
-    res.status(201).json(gameinfo);
+  const { gameCode, name, rating } = req.body;
+  const game = new GameInfo({ gameCode, name, rating });
+  game.save((err, game) => {
+    res.status(201).json(game);
   });
 };
 

@@ -1,4 +1,4 @@
-import UserData from "../models/Usuario";
+import UserData from "../models/Usuario.js";
 
 const postUserData = (req, res) => {
     userdata = UserData(req.body)
@@ -7,3 +7,8 @@ const postUserData = (req, res) => {
     });
 };
 
+const userController = {
+    postUserData
+};
+
+export default userController;
